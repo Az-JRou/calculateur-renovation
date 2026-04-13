@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calculateur Budget Rénovation 2025 — Estimation gratuite</title>
+  <meta name="description" content="Estimez gratuitement votre budget rénovation en moins de 2 minutes. Calcul par postes de travaux, fourchette haute et basse, résultat immédiat."/>
+  <meta property="og:title" content="Calculateur Budget Rénovation 2025"/>
+  <meta property="og:description" content="Estimez votre budget rénovation gratuitement, par postes de travaux."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #F7F4EF;
+      --bg2: #EDEAE3;
+      --fg: #1C1A17;
+      --fg2: #6B6760;
+      --fg3: #9B9893;
+      --accent: #B85C2C;
+      --accent-light: #F5E8DF;
+      --accent2: #2C6B4B;
+      --accent2-light: #E0EDE6;
+      --border: #DDD9D2;
+      --white: #FDFCFA;
+      --radius: 12px;
+      --radius-sm: 7px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Manrope', sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      min-height: 100vh;
+      padding: 0;
+    }
+
+    /* HEADER */
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo-mark {
+      width: 34px; height: 34px;
+      background: var(--accent);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .logo-mark svg { width: 18px; height: 18px; fill: white; }
+    .logo-text { font-family: 'Lora', serif; font-weight: 600; font-size: 16px; color: var(--fg); }
+    .logo-sub  { font-size: 11px; color: var(--fg3); margin-top: 1px; }
+    nav { margin-left: auto; display: flex; gap: 20px; }
+    nav a { font-size: 13px; color: var(--fg2); text-decoration: none; }
+    nav a:hover { color: var(--fg); }
+
+    /* HERO */
+    .hero {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 56px 24px 48px;
+      text-align: center;
+    }
+    .hero-tag {
+      display: inline-block;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-family: 'Lora', serif;
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--fg);
+      max-width: 620px;
+      margin: 0 auto 16px;
+    }
+    .hero h1 em { font-style: italic; color: var(--accent); }
+    .hero p {
+      font-size: 15px;
+      color: var(--fg2);
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+    .trust-row {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+    .trust-item {
+      font-size: 12px;
+      color: var(--fg3);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .trust-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent2); }
+
+    /* MAIN LAYOUT */
+    .main { max-width: 800px; margin: 0 auto; padding: 40px 20px 80px; }
+
+    /* STEPPER */
+    .stepper {
+      display: flex;
+      gap: 0;
+      margin-bottom: 36px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .step-item {
+      flex: 1;
+      padding: 14px 10px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--fg3);
+      border-right: 1px solid var(--border);
+      transition: all .2s;
+      position: relative;
+    }
+    .step-item:last-child { border-right: none; }
+    .step-item.active { background: var(--accent-light); color: var(--accent); font-weight: 600; }
+    .step-item.done { color: var(--accent2); }
+    .step-num {
+      display: block;
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      background: var(--bg2);
+      font-size: 11px;
+      font-weight: 600;
+      margin: 0 auto 5px;
+      line-height: 22px;
+    }
+    .step-item.active .step-num { background: var(--accent); color: white; }
+    .step-item.done .step-num { background: var(--accent2); color: white; }
+
+    /* CARDS */
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      margin-bottom: 16px;
+    }
+    .card-title {
+      font-family: 'Lora', serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--fg);
+      margin-bottom: 6px;
+    }
+    .card-sub { font-size: 13px; color: var(--fg2); margin-bottom: 24px; }
+
+    /* FORM ELEMENTS */
+    .field { margin-bottom: 20px; }
+    label.field-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--fg);
+      margin-bottom: 8px;
+    }
+    input[type="number"], select {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--bg);
+      font-family: 'Manrope', sans-serif;
+      font-size: 14px;
+      color: var(--fg);
+      appearance: none;
+      transition: border-color .15s;
+    }
+    input[type="number"]:focus, select:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    .input-wrap { position: relative; }
+    .input-unit {
+      position: absolute;
+      right: 14px; top: 50%;
+      transform: translateY(-50%);
+      font-size: 13px;
+      color: var(--fg3);
+    }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+    /* TYPE SELECTOR */
+    .type-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .type-btn {
+      padding: 16px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--bg);
+      cursor: pointer;
+      text-align: center;
+      transition: all .15s;
+      font-family: 'Manrope', sans-serif;
+    }
+    .type-btn:hover { border-color: var(--accent); background: var(--accent-light); }
+    .type-btn.selected { border-color: var(--accent); background: var(--accent-light); }
+    .type-btn .type-icon { font-size: 26px; display: block; margin-bottom: 6px; }
+    .type-btn .type-name { font-size: 13px; font-weight: 600; color: var(--fg); }
+    .type-btn .type-desc { font-size: 11px; color: var(--fg3); margin-top: 3px; }
+
+    /* POSTES CHECKBOXES */
+    .postes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    @media (max-width: 520px) { .postes-grid { grid-template-columns: 1fr; } .field-row { grid-template-columns: 1fr; } .type-grid { grid-template-columns: 1fr 1fr; } }
+    .poste-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 12px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all .15s;
+      background: var(--bg);
+      user-select: none;
+    }
+    .poste-check:hover { border-color: var(--accent); background: var(--accent-light); }
+    .poste-check.checked { border-color: var(--accent); background: var(--accent-light); }
+    .poste-check input { display: none; }
+    .checkmark {
+      width: 18px; height: 18px;
+      border: 1.5px solid var(--border);
+      border-radius: 4px;
+      flex-shrink: 0;
+      margin-top: 1px;
+      display: flex; align-items: center; justify-content: center;
+      transition: all .15s;
+      background: white;
+    }
+    .poste-check.checked .checkmark {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+    .checkmark::after {
+      content: '';
+      width: 4px; height: 8px;
+      border: 2px solid white;
+      border-top: none; border-left: none;
+      transform: rotate(45deg) translateY(-1px);
+      display: none;
+    }
+    .poste-check.checked .checkmark::after { display: block; }
+    .poste-info { flex: 1; }
+    .poste-name { font-size: 13px; font-weight: 600; color: var(--fg); }
+    .poste-range { font-size: 11px; color: var(--fg3); margin-top: 2px; }
+
+    /* GAMME */
+    .gamme-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .gamme-btn {
+      padding: 18px 12px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--bg);
+      cursor: pointer;
+      text-align: center;
+      transition: all .15s;
+      font-family: 'Manrope', sans-serif;
+    }
+    .gamme-btn:hover { border-color: var(--accent); }
+    .gamme-btn.selected { border-color: var(--accent); background: var(--accent-light); }
+    .gamme-label { font-size: 13px; font-weight: 600; color: var(--fg); display: block; margin-bottom: 4px; }
+    .gamme-desc  { font-size: 11px; color: var(--fg3); line-height: 1.5; }
+    .gamme-mult  { font-size: 11px; font-weight: 600; color: var(--accent); margin-top: 5px; display: block; }
+
+    /* NAVIGATION BUTTONS */
+    .btn-row { display: flex; gap: 10px; margin-top: 24px; }
+    .btn {
+      padding: 12px 24px;
+      border-radius: var(--radius-sm);
+      font-family: 'Manrope', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all .15s;
+    }
+    .btn-primary { background: var(--accent); color: white; flex: 1; }
+    .btn-primary:hover { background: #9E4E24; }
+    .btn-secondary { background: var(--bg2); color: var(--fg2); }
+    .btn-secondary:hover { background: var(--border); }
+
+    /* RESULT */
+    .result-card {
+      background: var(--fg);
+      border-radius: var(--radius);
+      padding: 32px;
+      color: white;
+      margin-bottom: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+    .result-card::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 180px; height: 180px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: .12;
+    }
+    .result-label { font-size: 12px; color: rgba(255,255,255,.5); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 8px; }
+    .result-range {
+      font-family: 'Lora', serif;
+      font-size: clamp(28px, 6vw, 42px);
+      font-weight: 600;
+      color: white;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .result-range span { color: rgba(255,255,255,.4); font-size: 60%; }
+    .result-sub { font-size: 13px; color: rgba(255,255,255,.6); }
+    .result-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 24px;
+    }
+    .result-split-item {
+      background: rgba(255,255,255,.08);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+    }
+    .rs-label { font-size: 11px; color: rgba(255,255,255,.45); }
+    .rs-value { font-size: 18px; font-weight: 600; color: white; margin-top: 2px; }
+
+    /* BREAKDOWN */
+    .breakdown-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin-bottom: 16px; }
+    .breakdown-title { font-family: 'Lora', serif; font-size: 16px; font-weight: 600; margin-bottom: 16px; }
+    .breakdown-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--bg2);
+    }
+    .breakdown-row:last-child { border-bottom: none; }
+    .br-name { font-size: 13px; color: var(--fg); flex: 1; }
+    .br-bar-bg { width: 100px; height: 5px; background: var(--bg2); border-radius: 3px; overflow: hidden; }
+    .br-bar { height: 5px; background: var(--accent); border-radius: 3px; transition: width .5s ease; }
+    .br-val { font-size: 13px; font-weight: 600; color: var(--fg); min-width: 90px; text-align: right; }
+
+    /* ADVICE */
+    .advice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+    @media (max-width: 540px) { .advice-grid { grid-template-columns: 1fr; } .result-split { grid-template-columns: 1fr 1fr; } .gamme-grid { grid-template-columns: 1fr; } }
+    .advice-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+    }
+    .advice-icon { font-size: 20px; margin-bottom: 8px; }
+    .advice-title { font-size: 13px; font-weight: 600; color: var(--fg); margin-bottom: 4px; }
+    .advice-text  { font-size: 12px; color: var(--fg2); line-height: 1.6; }
+
+    .aff-banner {
+      background: var(--accent2-light);
+      border: 1px solid #B0D4C0;
+      border-radius: var(--radius);
+      padding: 20px 22px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .aff-icon { font-size: 28px; flex-shrink: 0; }
+    .aff-title { font-size: 14px; font-weight: 600; color: var(--accent2); margin-bottom: 3px; }
+    .aff-desc  { font-size: 12px; color: #3A6B4F; line-height: 1.5; }
+    .aff-btn {
+      margin-left: auto;
+      flex-shrink: 0;
+      padding: 9px 18px;
+      background: var(--accent2);
+      color: white;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-family: 'Manrope', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .aff-btn:hover { background: #235A3D; }
+
+    .restart-btn {
+      display: block;
+      width: 100%;
+      padding: 13px;
+      text-align: center;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-family: 'Manrope', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--fg2);
+      cursor: pointer;
+      margin-top: 8px;
+    }
+    .restart-btn:hover { background: var(--border); }
+
+    /* HIDDEN/VISIBLE */
+    .step-panel { display: none; }
+    .step-panel.active { display: block; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      background: var(--white);
+      padding: 20px 24px;
+      text-align: center;
+      font-size: 11px;
+      color: var(--fg3);
+      line-height: 1.8;
+    }
+    footer a { color: var(--fg3); text-decoration: underline; }
+
+    /* ANIMATION */
+    @keyframes fadeUp { from { opacity:0; transform: translateY(12px); } to { opacity:1; transform: translateY(0); } }
+    .card, .result-card, .breakdown-card, .advice-card, .aff-banner { animation: fadeUp .3s ease both; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo-mark">
+    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22" fill="white" stroke="none"/></svg>
+  </div>
+  <div>
+    <div class="logo-text">RénovEstim</div>
+    <div class="logo-sub">Estimation de budget rénovation</div>
+  </div>
+  <nav>
+    <a href="#methodologie">Méthode</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <span class="hero-tag">Outil gratuit · Résultat immédiat</span>
+  <h1>Combien va coûter votre <em>rénovation</em>&nbsp;?</h1>
+  <p>Estimez votre budget travaux en 3 étapes, poste par poste, avec une fourchette réaliste pour 2025.</p>
+  <div class="trust-row">
+    <span class="trust-item"><span class="trust-dot"></span>Aucune inscription requise</span>
+    <span class="trust-item"><span class="trust-dot"></span>Données 2025 actualisées</span>
+    <span class="trust-item"><span class="trust-dot"></span>Fourchette haute et basse</span>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- STEPPER -->
+  <div class="stepper">
+    <div class="step-item active" id="si-1"><span class="step-num">1</span>Votre bien</div>
+    <div class="step-item" id="si-2"><span class="step-num">2</span>Les travaux</div>
+    <div class="step-item" id="si-3"><span class="step-num">3</span>La gamme</div>
+    <div class="step-item" id="si-4"><span class="step-num">✓</span>Résultat</div>
+  </div>
+
+  <!-- STEP 1 : BIEN -->
+  <div class="step-panel active" id="step-1">
+    <div class="card">
+      <div class="card-title">Votre bien</div>
+      <div class="card-sub">Ces informations permettent de calibrer les estimations au plus juste.</div>
+
+      <div class="field">
+        <label class="field-label">Type de bien</label>
+        <div class="type-grid">
+          <div class="type-btn selected" onclick="selectType('appartement', this)">
+            <span class="type-icon">🏢</span>
+            <span class="type-name">Appartement</span>
+            <span class="type-desc">En immeuble collectif</span>
+          </div>
+          <div class="type-btn" onclick="selectType('maison', this)">
+            <span class="type-icon">🏡</span>
+            <span class="type-name">Maison</span>
+            <span class="type-desc">Individuelle ou mitoyenne</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label class="field-label" for="surface">Surface totale</label>
+          <div class="input-wrap">
+            <input type="number" id="surface" min="10" max="1000" value="70" placeholder="ex : 75"/>
+            <span class="input-unit">m²</span>
+          </div>
+        </div>
+        <div class="field">
+          <label class="field-label" for="nb-pieces">Nombre de pièces</label>
+          <input type="number" id="nb-pieces" min="1" max="20" value="3" placeholder="ex : 4"/>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label class="field-label" for="nb-sdb">Nombre de salles de bain</label>
+          <input type="number" id="nb-sdb" min="0" max="5" value="1"/>
+        </div>
+        <div class="field">
+          <label class="field-label" for="nb-fenetre">Nombre de fenêtres</label>
+          <input type="number" id="nb-fenetre" min="0" max="30" value="5"/>
+        </div>
+      </div>
+
+      <div id="cuisine-field" class="field" style="display:none">
+        <label class="field-label" for="nb-cuisine">Nombre de cuisines</label>
+        <input type="number" id="nb-cuisine" min="0" max="3" value="1"/>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-primary" onclick="goStep(2)">Suivant — Les travaux →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 2 : TRAVAUX -->
+  <div class="step-panel" id="step-2">
+    <div class="card">
+      <div class="card-title">Postes de travaux</div>
+      <div class="card-sub">Sélectionnez tous les travaux envisagés. Vous pouvez en cocher plusieurs.</div>
+
+      <div class="postes-grid" id="postes-grid">
+        <!-- Populated by JS -->
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goStep(1)">← Retour</button>
+        <button class="btn btn-primary" onclick="goStep(3)">Suivant — La gamme →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 3 : GAMME -->
+  <div class="step-panel" id="step-3">
+    <div class="card">
+      <div class="card-title">Niveau de prestations</div>
+      <div class="card-sub">La gamme choisie impacte significativement le budget final.</div>
+
+      <div class="gamme-grid">
+        <div class="gamme-btn" onclick="selectGamme('eco', this)">
+          <span class="gamme-label">Économique</span>
+          <span class="gamme-desc">Matériaux entrée de gamme, main d'œuvre locale</span>
+          <span class="gamme-mult">Fourchette basse</span>
+        </div>
+        <div class="gamme-btn selected" onclick="selectGamme('standard', this)">
+          <span class="gamme-label">Standard ✓</span>
+          <span class="gamme-desc">Bon rapport qualité/prix, artisans qualifiés</span>
+          <span class="gamme-mult">Recommandé</span>
+        </div>
+        <div class="gamme-btn" onclick="selectGamme('premium', this)">
+          <span class="gamme-label">Premium</span>
+          <span class="gamme-desc">Matériaux haut de gamme, architecte d'intérieur</span>
+          <span class="gamme-mult">Fourchette haute</span>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goStep(2)">← Retour</button>
+        <button class="btn btn-primary" onclick="calculate()">Calculer mon budget →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 4 : RÉSULTAT -->
+  <div class="step-panel" id="step-4">
+
+    <div class="result-card">
+      <div class="result-label">Budget estimé pour votre rénovation</div>
+      <div class="result-range" id="result-range">— €</div>
+      <div class="result-sub" id="result-sub">—</div>
+      <div class="result-split">
+        <div class="result-split-item">
+          <div class="rs-label">Estimation basse</div>
+          <div class="rs-value" id="res-low">—</div>
+        </div>
+        <div class="result-split-item">
+          <div class="rs-label">Estimation haute</div>
+          <div class="rs-value" id="res-high">—</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="breakdown-card">
+      <div class="breakdown-title">Détail par poste de travaux</div>
+      <div id="breakdown-rows"></div>
+    </div>
+
+    <div class="advice-grid" id="advice-grid"></div>
+
+    <div class="aff-banner">
+      <span class="aff-icon">🔨</span>
+      <div>
+        <div class="aff-title">Obtenez des devis gratuits d'artisans</div>
+        <div class="aff-desc">Comparez jusqu'à 3 devis d'artisans certifiés RGE dans votre région.</div>
+      </div>
+      <button class="aff-btn" onclick="window.open('https://www.habitissimo.fr','_blank')">Devis gratuit →</button>
+    </div>
+
+    <button class="restart-btn" onclick="restart()">↩ Refaire une estimation</button>
+  </div>
+
+</div>
+
+<footer id="methodologie">
+  <strong>Méthode de calcul</strong> — Les estimations sont basées sur les tarifs moyens pratiqués en France en 2025, agrégés depuis les bases de données Capeb, FFB et observatoires régionaux du bâtiment. Les fourchettes reflètent la variabilité géographique et la qualité des matériaux. Ces estimations sont indicatives et ne remplacent pas un devis professionnel.<br><br>
+  <a href="#faq" id="faq">FAQ</a> · <a href="#">Mentions légales</a> · <a href="#">Contact</a><br>
+  © 2025 RénovEstim — Tous droits réservés
+</footer>
+
+<script>
+  // STATE
+  let state = { type: 'appartement', surface: 70, nbPieces: 3, nbSdb: 1, nbFenetre: 5, nbCuisine: 1, postes: new Set(), gamme: 'standard' };
+
+  // POSTES DATA
+  const POSTES = [
+    { id: 'peinture',    name: 'Peinture intérieure',  range: '20–60 €/m²',     eco: [20, 35],  std: [35, 55],  prem: [55, 90],   unit: 'surface' },
+    { id: 'sols',        name: 'Revêtements de sols',  range: '40–180 €/m²',    eco: [40, 80],  std: [80, 130], prem: [130, 220], unit: 'surface' },
+    { id: 'electricite', name: 'Électricité',           range: '70–180 €/m²',   eco: [70, 110], std: [110, 160],prem: [160, 230], unit: 'surface' },
+    { id: 'plomberie',   name: 'Plomberie générale',   range: '50–150 €/m²',    eco: [50, 90],  std: [90, 130], prem: [130, 200], unit: 'surface' },
+    { id: 'sdb',         name: 'Salle(s) de bain',     range: '4 000–20 000 €', eco: [4000,7000],std:[7000,12000],prem:[12000,22000],unit:'sdb' },
+    { id: 'cuisine',     name: 'Cuisine équipée',       range: '5 000–30 000 €', eco: [5000,9000],std:[9000,18000],prem:[18000,35000],unit:'cuisine' },
+    { id: 'isolation',   name: 'Isolation thermique',  range: '40–200 €/m²',    eco: [40, 80],  std: [80, 140], prem: [140, 220], unit: 'surface' },
+    { id: 'fenetres',    name: 'Fenêtres / menuiseries',range: '500–2 000 €/u', eco: [500, 800],std: [800,1400], prem: [1400,2200], unit: 'fenetre' },
+    { id: 'toiture',     name: 'Toiture / charpente',  range: '100–350 €/m²',   eco: [100, 160],std: [160, 260],prem: [260, 380], unit: 'surface' },
+    { id: 'chauffage',   name: 'Chauffage / VMC',       range: '80–220 €/m²',   eco: [80, 120], std: [120, 175],prem: [175, 260], unit: 'surface' },
+    { id: 'cloisons',    name: 'Cloisons / doublage',   range: '40–120 €/m²',   eco: [40, 65],  std: [65, 95],  prem: [95, 150],  unit: 'surface' },
+    { id: 'exterieur',   name: 'Façade / extérieur',    range: '30–150 €/m²',   eco: [30, 60],  std: [60, 100], prem: [100, 180], unit: 'surface' },
+  ];
+
+  const GAMME_ADVICE = {
+    eco: [
+      { icon: '💡', title: 'Astuce économique', text: 'Certains travaux comme la peinture peuvent être réalisés en DIY pour réduire la facture de 40 à 60%.' },
+      { icon: '📋', title: 'Comparer les devis', text: 'Obtenez au minimum 3 devis. L'écart peut atteindre 30% à qualité équivalente.' },
+    ],
+    standard: [
+      { icon: '✅', title: 'Artisans qualifiés', text: 'Privilégiez des artisans certifiés RGE pour les travaux d'isolation. Cela ouvre droit aux aides MaPrimeRénov'.' },
+      { icon: '📅', title: 'Planifier les travaux', text: 'Regroupez les corps de métier pour réduire les frais de déplacement et négocier un tarif global.' },
+    ],
+    premium: [
+      { icon: '🏛️', title: 'Architecte d\'intérieur', text: 'Pour des projets premium, un architecte d'intérieur coordonne les corps de métier et optimise le budget.' },
+      { icon: '🏷️', title: 'Matériaux premium', text: 'Les matériaux haut de gamme valorisent votre bien à la revente. Pensez-y comme un investissement.' },
+    ],
+  };
+
+  // INIT POSTES
+  function renderPostes() {
+    const grid = document.getElementById('postes-grid');
+    grid.innerHTML = POSTES.map(p => `
+      <div class="poste-check" id="pc-${p.id}" onclick="togglePoste('${p.id}')">
+        <input type="checkbox" id="cb-${p.id}"/>
+        <div class="checkmark"></div>
+        <div class="poste-info">
+          <div class="poste-name">${p.name}</div>
+          <div class="poste-range">${p.range}</div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function togglePoste(id) {
+    if (state.postes.has(id)) state.postes.delete(id);
+    else state.postes.add(id);
+    document.getElementById('pc-' + id).classList.toggle('checked', state.postes.has(id));
+  }
+
+  function selectType(type, el) {
+    state.type = type;
+    document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('selected'));
+    el.classList.add('selected');
+    const cuisineField = document.getElementById('cuisine-field');
+    cuisineField.style.display = type === 'maison' ? 'block' : 'none';
+  }
+
+  function selectGamme(g, el) {
+    state.gamme = g;
+    document.querySelectorAll('.gamme-btn').forEach(b => b.classList.remove('selected'));
+    el.classList.add('selected');
+  }
+
+  function goStep(n) {
+    if (n === 2) {
+      state.surface = parseInt(document.getElementById('surface').value) || 70;
+      state.nbPieces = parseInt(document.getElementById('nb-pieces').value) || 3;
+      state.nbSdb = parseInt(document.getElementById('nb-sdb').value) || 1;
+      state.nbFenetre = parseInt(document.getElementById('nb-fenetre').value) || 5;
+      state.nbCuisine = parseInt(document.getElementById('nb-cuisine').value) || 1;
+    }
+    document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('step-' + n).classList.add('active');
+    document.querySelectorAll('.step-item').forEach((el, i) => {
+      el.classList.remove('active', 'done');
+      if (i + 1 < n) el.classList.add('done');
+      else if (i + 1 === n) el.classList.add('active');
+    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function fmt(n) {
+    return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(n);
+  }
+
+  function calculate() {
+    state.surface = parseInt(document.getElementById('surface').value) || 70;
+    state.nbSdb = parseInt(document.getElementById('nb-sdb').value) || 1;
+    state.nbFenetre = parseInt(document.getElementById('nb-fenetre').value) || 5;
+    state.nbCuisine = state.type === 'maison' ? (parseInt(document.getElementById('nb-cuisine').value) || 1) : 1;
+
+    if (state.postes.size === 0) { alert('Sélectionnez au moins un poste de travaux.'); return; }
+
+    let totalLow = 0, totalHigh = 0;
+    const breakdown = [];
+
+    POSTES.forEach(p => {
+      if (!state.postes.has(p.id)) return;
+      const costs = state.gamme === 'eco' ? p.eco : state.gamme === 'premium' ? p.prem : p.std;
+      let low, high;
+      if (p.unit === 'surface') {
+        low = costs[0] * state.surface;
+        high = costs[1] * state.surface;
+      } else if (p.unit === 'sdb') {
+        low = costs[0] * state.nbSdb;
+        high = costs[1] * state.nbSdb;
+      } else if (p.unit === 'cuisine') {
+        low = costs[0] * state.nbCuisine;
+        high = costs[1] * state.nbCuisine;
+      } else if (p.unit === 'fenetre') {
+        low = costs[0] * state.nbFenetre;
+        high = costs[1] * state.nbFenetre;
+      }
+      totalLow += low;
+      totalHigh += high;
+      breakdown.push({ name: p.name, low, high, mid: (low + high) / 2 });
+    });
+
+    const maxMid = Math.max(...breakdown.map(b => b.mid));
+
+    // Display results
+    document.getElementById('result-range').innerHTML = `${fmt(totalLow)} <span>–</span> ${fmt(totalHigh)}`;
+    document.getElementById('result-sub').textContent = `Pour ${state.surface} m² · ${state.postes.size} poste${state.postes.size > 1 ? 's' : ''} · gamme ${state.gamme}`;
+    document.getElementById('res-low').textContent = fmt(totalLow);
+    document.getElementById('res-high').textContent = fmt(totalHigh);
+
+    // Breakdown
+    const bRows = document.getElementById('breakdown-rows');
+    bRows.innerHTML = breakdown.sort((a, b) => b.mid - a.mid).map(b => `
+      <div class="breakdown-row">
+        <span class="br-name">${b.name}</span>
+        <div class="br-bar-bg"><div class="br-bar" style="width:${Math.round(b.mid / maxMid * 100)}%"></div></div>
+        <span class="br-val">${fmt(b.low)} – ${fmt(b.high)}</span>
+      </div>
+    `).join('');
+
+    // Advice
+    const advices = GAMME_ADVICE[state.gamme];
+    document.getElementById('advice-grid').innerHTML = advices.map(a => `
+      <div class="advice-card">
+        <div class="advice-icon">${a.icon}</div>
+        <div class="advice-title">${a.title}</div>
+        <div class="advice-text">${a.text}</div>
+      </div>
+    `).join('');
+
+    goStep(4);
+  }
+
+  function restart() {
+    state.postes.clear();
+    document.querySelectorAll('.poste-check').forEach(el => el.classList.remove('checked'));
+    goStep(1);
+  }
+
+  // INIT
+  renderPostes();
+</script>
+</body>
+</html>
