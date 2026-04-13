@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Budget rénovation maison 2025 : tous les prix par poste de travaux</title>
+  <meta name="description" content="Quel budget prévoir pour rénover une maison ou un appartement en 2025 ? Tous les prix au m², par poste de travaux, avec conseils d'un professionnel."/>
+  <meta property="og:title" content="Budget rénovation 2025 : prix par poste de travaux"/>
+  <meta property="og:description" content="Guide complet des coûts de rénovation en France en 2025, poste par poste."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #F7F4EF; --bg2: #EDEAE3; --fg: #1C1A17; --fg2: #6B6760; --fg3: #9B9893;
+      --accent: #B85C2C; --accent-light: #F5E8DF; --accent2: #2C6B4B; --accent2-light: #E0EDE6;
+      --border: #DDD9D2; --white: #FDFCFA; --radius: 12px; --radius-sm: 7px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Manrope', sans-serif; background: var(--bg); color: var(--fg); }
+
+    header { background: var(--white); border-bottom: 1px solid var(--border); padding: 18px 24px; display: flex; align-items: center; gap: 12px; }
+    .logo-mark { width: 34px; height: 34px; background: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+    .logo-mark svg { width: 18px; height: 18px; fill: white; }
+    .logo-text { font-family: 'Lora', serif; font-weight: 600; font-size: 16px; }
+    .logo-sub { font-size: 11px; color: var(--fg3); }
+    nav { margin-left: auto; display: flex; gap: 20px; }
+    nav a { font-size: 13px; color: var(--fg2); text-decoration: none; }
+
+    .article-wrap { max-width: 740px; margin: 0 auto; padding: 48px 24px 80px; }
+
+    .article-tag { display: inline-block; background: var(--accent-light); color: var(--accent); font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; margin-bottom: 18px; }
+    h1 { font-family: 'Lora', serif; font-size: clamp(26px, 4vw, 38px); font-weight: 600; line-height: 1.25; color: var(--fg); margin-bottom: 16px; }
+    .article-meta { font-size: 13px; color: var(--fg3); margin-bottom: 32px; display: flex; gap: 16px; flex-wrap: wrap; }
+    .article-meta span::before { content: '· '; }
+    .article-meta span:first-child::before { content: ''; }
+
+    .lead { font-size: 17px; color: var(--fg2); line-height: 1.8; margin-bottom: 36px; font-family: 'Lora', serif; font-style: italic; border-left: 3px solid var(--accent); padding-left: 20px; }
+
+    h2 { font-family: 'Lora', serif; font-size: 22px; font-weight: 600; color: var(--fg); margin: 44px 0 14px; }
+    h3 { font-size: 16px; font-weight: 600; color: var(--fg); margin: 28px 0 10px; }
+    p  { font-size: 15px; color: var(--fg); line-height: 1.85; margin-bottom: 18px; }
+    ul { padding-left: 20px; margin-bottom: 18px; }
+    li { font-size: 15px; color: var(--fg); line-height: 1.85; margin-bottom: 6px; }
+
+    /* PRIX TABLE */
+    .prix-table { width: 100%; border-collapse: collapse; margin: 20px 0 30px; font-size: 14px; }
+    .prix-table th { background: var(--fg); color: white; padding: 12px 14px; text-align: left; font-weight: 500; }
+    .prix-table th:first-child { border-radius: 8px 0 0 0; }
+    .prix-table th:last-child { border-radius: 0 8px 0 0; }
+    .prix-table td { padding: 11px 14px; border-bottom: 1px solid var(--bg2); }
+    .prix-table tr:nth-child(even) td { background: var(--white); }
+    .prix-table tr:nth-child(odd) td { background: var(--bg); }
+    .prix-table tr:last-child td:first-child { border-radius: 0 0 0 8px; }
+    .prix-table tr:last-child td:last-child { border-radius: 0 0 8px 0; }
+    .prix-table .prix { font-weight: 600; color: var(--accent); white-space: nowrap; }
+
+    /* CALLOUT */
+    .callout { background: var(--accent2-light); border-left: 3px solid var(--accent2); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 16px 20px; margin: 24px 0; }
+    .callout-title { font-size: 13px; font-weight: 600; color: var(--accent2); margin-bottom: 6px; }
+    .callout p { font-size: 14px; color: #2A5A40; margin: 0; line-height: 1.7; }
+
+    .warning { background: #FEF3E8; border-left: 3px solid #E8893C; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 16px 20px; margin: 24px 0; }
+    .warning-title { font-size: 13px; font-weight: 600; color: #B85C2C; margin-bottom: 6px; }
+    .warning p { font-size: 14px; color: #7A4020; margin: 0; line-height: 1.7; }
+
+    /* CTA OUTIL */
+    .cta-outil { background: var(--fg); border-radius: var(--radius); padding: 28px 32px; margin: 40px 0; text-align: center; }
+    .cta-outil h3 { font-family: 'Lora', serif; color: white; font-size: 20px; margin: 0 0 10px; font-weight: 600; }
+    .cta-outil p  { color: rgba(255,255,255,.65); font-size: 14px; margin: 0 0 20px; }
+    .cta-outil a  { display: inline-block; background: var(--accent); color: white; padding: 12px 28px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 600; text-decoration: none; }
+    .cta-outil a:hover { background: #9E4E24; }
+
+    /* SCENARIO CARDS */
+    .scenarios { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin: 24px 0; }
+    @media (max-width: 560px) { .scenarios { grid-template-columns: 1fr; } }
+    .sc-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; }
+    .sc-type { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; color: var(--fg3); margin-bottom: 8px; }
+    .sc-title { font-size: 14px; font-weight: 600; color: var(--fg); margin-bottom: 6px; }
+    .sc-prix { font-family: 'Lora', serif; font-size: 20px; font-weight: 600; color: var(--accent); }
+    .sc-detail { font-size: 12px; color: var(--fg3); margin-top: 6px; line-height: 1.6; }
+
+    /* AIDES */
+    .aides-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0; }
+    @media (max-width: 520px) { .aides-grid { grid-template-columns: 1fr; } }
+    .aide-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px; }
+    .aide-name { font-size: 13px; font-weight: 600; color: var(--fg); margin-bottom: 4px; }
+    .aide-desc { font-size: 12px; color: var(--fg2); line-height: 1.6; }
+    .aide-montant { font-size: 13px; font-weight: 600; color: var(--accent2); margin-top: 8px; }
+
+    footer { border-top: 1px solid var(--border); background: var(--white); padding: 20px 24px; text-align: center; font-size: 11px; color: var(--fg3); line-height: 1.8; }
+    footer a { color: var(--fg3); }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo-mark">
+    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22" fill="white" stroke="none"/></svg>
+  </div>
+  <div>
+    <div class="logo-text">RénovEstim</div>
+    <div class="logo-sub">Estimation de budget rénovation</div>
+  </div>
+  <nav>
+    <a href="index.html">Calculateur</a>
+    <a href="a-propos.html">À propos</a>
+  </nav>
+</header>
+
+<div class="article-wrap">
+  <span class="article-tag">Guide 2025</span>
+  <h1>Budget rénovation maison et appartement : tous les prix par poste de travaux</h1>
+  <div class="article-meta">
+    <span>Mis à jour : janvier 2025</span>
+    <span>Lecture : 8 min</span>
+    <span>Sources : Capeb, FFB, observatoires régionaux</span>
+  </div>
+
+  <p class="lead">Rénover un logement en France coûte en moyenne entre 400 et 1 200 € par m² selon l'ampleur des travaux et le niveau de prestations. Ce guide détaille chaque poste, avec les fourchettes de prix réelles pratiquées en 2025.</p>
+
+  <h2>Les grandes catégories de rénovation</h2>
+  <p>Avant d'aborder les prix poste par poste, il est utile de distinguer trois grandes catégories de travaux, qui n'ont pas le même impact budgétaire.</p>
+
+  <div class="scenarios">
+    <div class="sc-card">
+      <div class="sc-type">Rafraîchissement</div>
+      <div class="sc-title">Rénovation légère</div>
+      <div class="sc-prix">150–400 €/m²</div>
+      <div class="sc-detail">Peinture, sols, sanitaires. Pas de modification de structure ni de réseau.</div>
+    </div>
+    <div class="sc-card">
+      <div class="sc-type">Rénovation partielle</div>
+      <div class="sc-title">Rénovation intermédiaire</div>
+      <div class="sc-prix">400–900 €/m²</div>
+      <div class="sc-detail">Cuisine, salle de bain, électricité, isolation. Travaux ciblés par corps de métier.</div>
+    </div>
+    <div class="sc-card">
+      <div class="sc-type">Réhabilitation</div>
+      <div class="sc-title">Rénovation complète</div>
+      <div class="sc-prix">900–2 000 €/m²</div>
+      <div class="sc-detail">Tout à refaire : structure, réseaux, second œuvre, finitions haut de gamme.</div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-title">💡 Bon à savoir</div>
+    <p>Ces fourchettes sont des moyennes nationales. En Île-de-France et sur la Côte d'Azur, comptez un surcoût de 15 à 25%. Dans les zones rurales, les prix peuvent être 10 à 15% inférieurs.</p>
+  </div>
+
+  <h2>Prix par poste de travaux en 2025</h2>
+
+  <h3>Peinture intérieure</h3>
+  <p>La peinture est le poste de rénovation le plus courant. Le prix varie selon la qualité de la préparation des supports et la qualité des peintures utilisées.</p>
+  <table class="prix-table">
+    <tr><th>Prestation</th><th>Gamme éco</th><th>Gamme standard</th><th>Gamme premium</th></tr>
+    <tr><td>Peinture murs et plafonds</td><td class="prix">20–35 €/m²</td><td class="prix">35–55 €/m²</td><td class="prix">55–90 €/m²</td></tr>
+    <tr><td>Enduit + peinture (support abîmé)</td><td class="prix">40–65 €/m²</td><td class="prix">65–95 €/m²</td><td class="prix">95–150 €/m²</td></tr>
+    <tr><td>Peinture boiseries (portes, fenêtres)</td><td class="prix">30–50 €/u</td><td class="prix">50–90 €/u</td><td class="prix">90–180 €/u</td></tr>
+  </table>
+
+  <h3>Revêtements de sols</h3>
+  <p>Le choix du revêtement est l'un des facteurs les plus importants sur le budget et sur la valeur perçue du bien à la revente.</p>
+  <table class="prix-table">
+    <tr><th>Matériau</th><th>Fourniture</th><th>Pose</th><th>Total posé</th></tr>
+    <tr><td>Carrelage grès cérame</td><td>15–80 €/m²</td><td>35–60 €/m²</td><td class="prix">50–140 €/m²</td></tr>
+    <tr><td>Parquet stratifié</td><td>15–45 €/m²</td><td>20–35 €/m²</td><td class="prix">35–80 €/m²</td></tr>
+    <tr><td>Parquet massif</td><td>50–200 €/m²</td><td>30–50 €/m²</td><td class="prix">80–250 €/m²</td></tr>
+    <tr><td>Béton ciré</td><td>20–50 €/m²</td><td>60–120 €/m²</td><td class="prix">80–170 €/m²</td></tr>
+    <tr><td>Vinyl LVT</td><td>15–40 €/m²</td><td>15–25 €/m²</td><td class="prix">30–65 €/m²</td></tr>
+  </table>
+
+  <h3>Salle de bain complète</h3>
+  <p>La rénovation d'une salle de bain est l'un des postes les plus complexes car elle cumule plomberie, électricité, carrelage et équipements. Pour une salle de bain standard de 5 à 8 m² :</p>
+  <table class="prix-table">
+    <tr><th>Niveau</th><th>Fourchette</th><th>Ce qui est inclus</th></tr>
+    <tr><td>Économique</td><td class="prix">4 000–7 000 €</td><td>Équipements entrée de gamme, carrelage basique</td></tr>
+    <tr><td>Standard</td><td class="prix">7 000–12 000 €</td><td>Douche à l'italienne, faïence qualitative, meuble double vasque</td></tr>
+    <tr><td>Premium</td><td class="prix">12 000–22 000 €</td><td>Matériaux haut de gamme, robinetterie design, paroi sur mesure</td></tr>
+  </table>
+
+  <h3>Électricité</h3>
+  <p>La mise aux normes électriques est souvent sous-estimée, surtout dans les biens anciens. Une installation datant d'avant 1990 devra presque systématiquement être refaite.</p>
+  <table class="prix-table">
+    <tr><th>Prestation</th><th>Fourchette</th></tr>
+    <tr><td>Mise aux normes complète (tableaux, gaines, prises)</td><td class="prix">70–180 €/m²</td></tr>
+    <tr><td>Remplacement du tableau électrique seul</td><td class="prix">800–2 000 €</td></tr>
+    <tr><td>Installation VMC simple flux</td><td class="prix">500–1 500 €</td></tr>
+    <tr><td>Installation VMC double flux</td><td class="prix">3 000–8 000 €</td></tr>
+  </table>
+
+  <h3>Isolation thermique</h3>
+  <p>L'isolation est le poste qui offre le meilleur retour sur investissement à long terme, notamment grâce aux économies d'énergie et aux aides de l'État.</p>
+  <table class="prix-table">
+    <tr><th>Type d'isolation</th><th>Fourchette</th></tr>
+    <tr><td>Isolation des combles perdus (soufflage)</td><td class="prix">25–60 €/m²</td></tr>
+    <tr><td>Isolation des murs par l'intérieur (ITI)</td><td class="prix">40–100 €/m²</td></tr>
+    <tr><td>Isolation par l'extérieur (ITE)</td><td class="prix">120–250 €/m²</td></tr>
+    <tr><td>Isolation du plancher bas</td><td class="prix">30–80 €/m²</td></tr>
+  </table>
+
+  <div class="callout">
+    <div class="callout-title">✅ Aides disponibles pour l'isolation</div>
+    <p>Les travaux d'isolation sont éligibles à MaPrimeRénov', aux CEE (Certificats d'Économies d'Énergie) et à l'éco-PTZ. L'isolation des combles peut ainsi être financée à 60-80% selon les revenus du foyer.</p>
+  </div>
+
+  <h3>Fenêtres et menuiseries</h3>
+  <table class="prix-table">
+    <tr><th>Type</th><th>Fourniture + pose</th></tr>
+    <tr><td>Fenêtre PVC double vitrage (standard)</td><td class="prix">500–900 €/u</td></tr>
+    <tr><td>Fenêtre aluminium double vitrage</td><td class="prix">800–1 500 €/u</td></tr>
+    <tr><td>Fenêtre bois double vitrage</td><td class="prix">900–2 000 €/u</td></tr>
+    <tr><td>Porte d'entrée (sécurité, isolation)</td><td class="prix">1 200–4 000 €</td></tr>
+  </table>
+
+  <div class="warning">
+    <div class="warning-title">⚠️ Attention aux devis incomplets</div>
+    <p>Certains artisans proposent des devis "fourniture seule" ou "pose seule" très attractifs. Vérifiez toujours que le devis inclut l'évacuation des gravats, la protection des sols, et la reprise des finitions autour des travaux (enduit, peinture).</p>
+  </div>
+
+  <h2>Les aides financières à mobiliser en 2025</h2>
+  <p>De nombreux dispositifs permettent de réduire significativement le coût d'une rénovation, en particulier pour les travaux énergétiques.</p>
+
+  <div class="aides-grid">
+    <div class="aide-card">
+      <div class="aide-name">MaPrimeRénov'</div>
+      <div class="aide-desc">Aide de l'ANAH pour les travaux de rénovation énergétique. Accessible à tous les propriétaires.</div>
+      <div class="aide-montant">Jusqu'à 70% des travaux</div>
+    </div>
+    <div class="aide-card">
+      <div class="aide-name">Éco-PTZ</div>
+      <div class="aide-desc">Prêt à taux zéro pour financer des travaux de rénovation énergétique sans avance de trésorerie.</div>
+      <div class="aide-montant">Jusqu'à 50 000 €</div>
+    </div>
+    <div class="aide-card">
+      <div class="aide-name">CEE (Coup de pouce)</div>
+      <div class="aide-desc">Certificats d'Économies d'Énergie : primes versées par les fournisseurs d'énergie.</div>
+      <div class="aide-montant">Variable selon travaux</div>
+    </div>
+    <div class="aide-card">
+      <div class="aide-name">TVA réduite à 5,5%</div>
+      <div class="aide-desc">Applicable aux travaux d'amélioration énergétique dans les logements de plus de 2 ans.</div>
+      <div class="aide-montant">-14,5% sur la facture HT</div>
+    </div>
+  </div>
+
+  <div class="cta-outil">
+    <h3>Estimez votre budget en 2 minutes</h3>
+    <p>Utilisez notre calculateur gratuit pour obtenir une fourchette personnalisée selon votre bien et vos travaux.</p>
+    <a href="index.html">Accéder au calculateur →</a>
+  </div>
+
+  <h2>Conseils pour maîtriser son budget rénovation</h2>
+
+  <h3>1. Obtenir plusieurs devis</h3>
+  <p>La règle d'or : ne jamais signer un devis unique. Obtenez systématiquement 3 devis pour chaque corps de métier. L'écart peut atteindre 30 à 40% à qualité identique, simplement selon la disponibilité et les charges de l'artisan.</p>
+
+  <h3>2. Prévoir une réserve de 15 à 20%</h3>
+  <p>Les travaux de rénovation réservent toujours des surprises : mur porteur dissimulé, installation électrique vétuste non visible, infiltrations d'eau. Une réserve de 15 à 20% du budget total est indispensable pour absorber ces imprévus sans bloquer le chantier.</p>
+
+  <h3>3. Coordonner les corps de métier</h3>
+  <p>L'ordre des interventions est crucial. L'électricité et la plomberie doivent être réalisées avant les cloisons, les cloisons avant le carrelage, le carrelage avant la peinture. Une mauvaise planification peut nécessiter de refaire des travaux terminés.</p>
+
+  <h3>4. Distinguer l'urgent de l'esthétique</h3>
+  <p>Priorisez toujours les travaux structurels et les mises aux normes (toiture, électricité, humidité) sur les travaux de finition. Un bien avec une belle cuisine rénovée mais une toiture défaillante perd rapidement de sa valeur.</p>
+
+  <h2>Conclusion</h2>
+  <p>Bien budgéter une rénovation, c'est avant tout collecter des données précises : état du bien, postes à traiter, niveau de prestations souhaité, aides mobilisables. Notre calculateur vous permet d'obtenir une première estimation fiable en quelques minutes, que vous pourrez affiner avec les devis des artisans.</p>
+</div>
+
+<footer>
+  Les prix présentés dans cet article sont des estimations basées sur les tarifs moyens pratiqués en France en 2025 (sources : Capeb, FFB, observatoires régionaux). Ils sont donnés à titre indicatif et ne remplacent pas un devis professionnel.<br><br>
+  <a href="index.html">Calculateur</a> · <a href="a-propos.html">À propos</a> · <a href="#">Mentions légales</a><br>
+  © 2025 RénovEstim
+</footer>
+</body>
+</html>
